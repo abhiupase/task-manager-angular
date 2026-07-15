@@ -1,0 +1,41 @@
+<div class="page">
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">▣</span>
+      <div>
+        <h1>Task Manager</h1>
+        <p class="tagline">Angular 17 · Signals · Reactive Forms · REST API</p>
+      </div>
+    </div>
+
+    <div class="progress-block">
+      <div class="progress-numbers">
+        <span class="done-count">{{ done() }}</span>
+        <span class="slash">/</span>
+        <span class="total-count">{{ total() }}</span>
+        <span class="label">done</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" [style.width.%]="progress()"></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <h2>New task</h2>
+      <app-task-form (created)="onTaskCreated()"></app-task-form>
+    </aside>
+
+    <section class="board-area">
+      <app-task-board></app-task-board>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    <p>
+      Demo project · Frontend consumes a REST API (json-server) the same way it would consume ASP.NET Core endpoints —
+      HttpClient, typed models, and reactive state via Signals.
+    </p>
+  </footer>
+</div>

@@ -1,0 +1,57 @@
+<form class="task-form" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+  <div class="field">
+    <label for="title">Task title</label>
+    <input
+      id="title"
+      type="text"
+      formControlName="title"
+      placeholder="e.g. Wire up the login endpoint"
+      [class.invalid]="title.invalid && title.touched"
+    />
+    @if (title.invalid && title.touched) {
+      <span class="error">Title needs at least 3 characters.</span>
+    }
+  </div>
+
+  <div class="field">
+    <label for="description">Description</label>
+    <textarea
+      id="description"
+      formControlName="description"
+      rows="2"
+      placeholder="Optional details"
+      [class.invalid]="description.invalid && description.touched"
+    ></textarea>
+    @if (description.invalid && description.touched) {
+      <span class="error">Keep it under 240 characters.</span>
+    }
+  </div>
+
+  <div class="row">
+    <div class="field">
+      <label for="priority">Priority</label>
+      <select id="priority" formControlName="priority">
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="dueDate">Due date</label>
+      <input
+        id="dueDate"
+        type="date"
+        formControlName="dueDate"
+        [class.invalid]="dueDate.invalid && dueDate.touched"
+      />
+      @if (dueDate.invalid && dueDate.touched) {
+        <span class="error">Pick a due date.</span>
+      }
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="submitting">
+    {{ submitting ? 'Adding…' : 'Add task' }}
+  </button>
+</form>

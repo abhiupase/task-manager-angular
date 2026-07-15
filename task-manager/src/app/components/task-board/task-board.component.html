@@ -1,0 +1,43 @@
+@if (loading()) {
+  <p class="status-msg">Loading tasks…</p>
+}
+
+@if (error()) {
+  <p class="status-msg error">{{ error() }}</p>
+}
+
+<div class="board">
+  @for (col of columns; track col.status) {
+    <section class="column">
+      <header>
+        <h3>{{ col.label }}</h3>
+        <span class="count">{{ tasksFor(col.status).length }}</span>
+      </header>
+
+      <div class="cards">
+        @for (task of tasksFor(col.status); track task.id) {
+          <article class="card" [attr.data-priority]="task.priority">
+            <div class="card-top">
+              <h4>{{ task.title }}</h4>
+              <span class="priority" [attr.data-priority]="task.priority">{{ task.priority }}</span>
+            </div>
+            @if (task.description) {
+              <p class="desc">{{ task.description }}</p>
+            }
+            <div class="card-bottom">
+              <span class="due">Due {{ task.dueDate }}</span>
+              <div class="actions">
+                @if (task.status !== 'done') {
+                  <button class="advance" (click)="advance(task)">Move →</button>
+                }
+                <button class="remove" (click)="remove(task)" aria-label="Delete task">✕</button>
+              </div>
+            </div>
+          </article>
+        } @empty {
+          <p class="empty">No tasks here.</p>
+        }
+      </div>
+    </section>
+  }
+</div>
