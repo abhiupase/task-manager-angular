@@ -22,6 +22,7 @@ export class TaskFormComponent {
   // Reactive form with validators — mirrors what the JD calls out explicitly.
   form = this.fb.nonNullable.group({
     title: ['', [Validators.required, Validators.minLength(3)]],
+    urgency: [0 as NewTask['urgency'], [Validators.required]],
     description: ['', [Validators.maxLength(240)]],
     priority: ['medium' as NewTask['priority'], [Validators.required]],
     dueDate: ['', [Validators.required]],
@@ -51,6 +52,7 @@ export class TaskFormComponent {
       priority: value.priority,
       dueDate: value.dueDate,
       status: 'todo',
+      urgency: 0
     };
 
     this.taskService.createTask(newTask).subscribe({
