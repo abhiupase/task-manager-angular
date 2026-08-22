@@ -31,6 +31,9 @@ export class TaskFormComponent {
   get title() {
     return this.form.controls.title;
   }
+  get urgency() {
+    return this.form.controls.urgency;
+  }
   get description() {
     return this.form.controls.description;
   }
@@ -48,17 +51,17 @@ export class TaskFormComponent {
     const value = this.form.getRawValue();
     const newTask: NewTask = {
       title: value.title,
+      urgency: value.urgency,
       description: value.description,
       priority: value.priority,
       dueDate: value.dueDate,
-      status: 'todo',
-      urgency: 0
+      status: 'todo'      
     };
 
     this.taskService.createTask(newTask).subscribe({
       next: () => {
         this.submitting = false;
-        this.form.reset({ priority: 'medium' });
+        this.form.reset({ priority: 'medium',urgency: 0 });
         this.created.emit();
       },
       error: () => {

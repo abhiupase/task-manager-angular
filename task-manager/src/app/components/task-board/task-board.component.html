@@ -21,6 +21,9 @@
               <h4>{{ task.title }}</h4>
               <span class="priority" [attr.data-priority]="task.priority">{{ task.priority }}</span>
             </div>
+              @if (task.urgency > 0) {
+              <p class="urgency">{{ task.urgency }}</p>
+            }
             @if (task.description) {
               <p class="desc">{{ task.description }}</p>
             }
@@ -30,9 +33,12 @@
                 @if (task.status !== 'done') {
                   <button class="advance" (click)="advance(task)">Move →</button>
                 }
+                <button class="update" (click)="update(task)" aria-label="Delete task">Update</button>
                 <button class="remove" (click)="remove(task)" aria-label="Delete task">✕</button>
+
               </div>
             </div>
+
           </article>
         } @empty {
           <p class="empty">No tasks here.</p>

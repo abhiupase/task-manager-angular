@@ -1,36 +1,59 @@
 {
   "tasks": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Set up project repository",
+      "urgency": 1,
       "description": "Initialize the repo and configure CI pipeline.",
       "status": "done",
       "priority": "medium",
       "dueDate": "2026-07-10"
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Design task board UI",
+      "urgency": 1,
       "description": "Create wireframes for the kanban-style board.",
       "status": "done",
       "priority": "high",
       "dueDate": "2026-07-18"
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Integrate REST API",
+      "urgency": 1,
       "description": "Wire up HttpClient services to the backend endpoints.",
       "status": "in-progress",
       "priority": "high",
       "dueDate": "2026-07-20"
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "Write unit tests",
+      "urgency": 1,
       "description": "Cover the task service and form validation logic.",
       "status": "todo",
       "priority": "low",
       "dueDate": "2026-07-25"
+    },
+    {
+      "title": "New Dropdown for contact",
+      "urgency": 0,
+      "description": "Add new DD for POC",
+      "priority": "low",
+      "dueDate": "2026-08-17",
+      "status": "in-progress",
+      "id": "V6Xi8EiHsEg"
+    },
+    {
+      "title": "Report API",
+      "urgency": "2",
+      "description": "New report API",
+      "priority": "high",
+      "dueDate": "2026-08-19",
+      "status": "todo",
+      "id": "OoppX5WJC1o"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

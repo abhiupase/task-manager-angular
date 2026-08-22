@@ -39,6 +39,9 @@ export class TaskBoardComponent {
     }
   }
 
+  update(task: Task): void {
+    this.taskService.updateTask(task.id, task).subscribe();
+  }
   remove(task: Task): void {
     this.taskService.deleteTask(task.id).subscribe();
   }
